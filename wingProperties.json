@@ -1,0 +1,9 @@
+{
+	"resourcePlugin":{
+		"configs":[{
+			"configPath":"resource/custom.res.json",
+			"relativePath":"resource/"
+		}]
+	},
+	"theme":"resource/default.thm.json"
+}
