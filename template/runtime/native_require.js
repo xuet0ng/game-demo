@@ -10,6 +10,7 @@ var game_file_list = [
 	"polyfill/promise.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/SimpleMap.js",
 	//----auto game_file_list end----
 ];
 

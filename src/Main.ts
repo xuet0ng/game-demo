@@ -117,7 +117,11 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
-
+        let stageH = this.stage.stageHeight;
+        let stageW = this.stage.stageWidth;
+        console.log(stageH, stageW);
+        let sMap: SimpleMap = new SimpleMap(stageH, stageW);
+        this.addChild(sMap);
     }
 }
 
