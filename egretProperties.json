@@ -20,6 +20,10 @@
     },
     {
       "name": "tween"
+    },
+    {
+      "name": "mouse",
+      "path": "../../3rd/egret-game-library/mouse/libsrc"
     }
   ]
 }

@@ -7,10 +7,15 @@ var game_file_list = [
 	"libs/modules/game/game.js",
 	"libs/modules/res/res.js",
 	"libs/modules/tween/tween.js",
+	"libs/modules/mouse/mouse.js",
 	"polyfill/promise.js",
+	"bin-debug/Actor.js",
+	"bin-debug/Bullet.js",
+	"bin-debug/HitTest.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
 	"bin-debug/SimpleMap.js",
+	"bin-debug/utils/GameUtil.js",
 	//----auto game_file_list end----
 ];
 

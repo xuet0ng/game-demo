@@ -34,6 +34,8 @@ class Main extends egret.DisplayObjectContainer {
      * Process interface loading
      */
     private loadingView: LoadingUI;
+    private bullets: Bullet[] = [];
+    private enemy: Actor;
 
     public constructor() {
         super();
@@ -117,11 +119,50 @@ class Main extends egret.DisplayObjectContainer {
      * Create a game scene
      */
     private createGameScene() {
+        this.addEventListener(egret.Event.ENTER_FRAME, this.gameViewUpdate, this);
         let stageH = this.stage.stageHeight;
         let stageW = this.stage.stageWidth;
         console.log(stageH, stageW);
         let sMap: SimpleMap = new SimpleMap(stageH, stageW);
         this.addChild(sMap);
+
+        let actor: Actor = new Actor();
+        this.addChild(actor);
+        actor.x = 20;
+        actor.y = 20;
+
+        let enemy: Actor = new Actor();
+        enemy.x = 400;
+        enemy.y = 800;
+        this.addChild(enemy);
+        this.enemy = enemy;
+
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, shotBullet, this);
+
+        function shotBullet(e: egret.TouchEvent): void {
+            let bullet: Bullet = new Bullet(actor.x, actor.y);
+            this.bullets.push(bullet);
+            this.addChild(bullet);
+            let tw = egret.Tween.get(bullet);
+            tw.to({x: e.stageX, y: e.stageY}, 1000).call(destoryBullet, this, [bullet]).wait;
+        }
+
+        function destoryBullet(bullet: Bullet): void {
+            this.bullets.splice(this.bullets.indexOf(bullet), 1);
+            this.removeChild(bullet);
+        }
+    }
+
+    private gameViewUpdate(e: egret.Event): void {
+        this.hitTest();
+    }
+
+    private hitTest(): void {
+        for(let i = 0; i < this.bullets.length; i++) {
+            if (GameUtil.hitTest(this.bullets[i], this.enemy)) {
+                console.log("hit");
+            }
+        }
     }
 }
 
